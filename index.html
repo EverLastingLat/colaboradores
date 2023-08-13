@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="https://cdn.icon-icons.com/icons2/2699/PNG/512/minecraft_logo_icon_168974.png">
+  <title>Créditos</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+  <script type="module">
+    let utils;
+    let styleSheetLoaded = false;
+  
+    function importing() {
+      let modulePromise = null;
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log("Loading local utils")
+        modulePromise = import('../../EverLastingLat.github.io/utils/js/global.js');
+      } else {
+        console.log("Loading github utils")
+        modulePromise = import('https://cdn.jsdelivr.net/gh/EverLastingLat/EverLasitngLat.github.io/utils/js/global.js');
+      }
+      return modulePromise.then(module => {
+        utils = module.default;
+        initializeStylesheet();
+        localScript()
+      }).catch(error => { console.error('Error loading module:', error);  });
+    }
+  
+    function initializeStylesheet() {
+      if(styleSheetLoaded) return;
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      if (utils && utils.rWeLive) {
+        console.log("Loading github's stylesheet");
+        link.href = "https://cdn.jsdelivr.net/gh/EverLastingLat/EverLasitngLat.github.io/utils/style.css";
+      } else {
+        console.log("Loading local stylesheet.");
+        link.href = './../../EverLastingLat.github.io/utils/style.css';
+      }
+      document.head.appendChild(link);
+      styleSheetLoaded = true
+    }
+    importing().then(() => {initializeStylesheet();});
+    if (document.readyState === 'complete' || document.readyState === 'interactive') initializeStylesheet();
+    else window.addEventListener('DOMContentLoaded', initializeStylesheet);
+
+    function localScript(){
+      console.log("Loaded utils.")
+    }
+  </script>
+</head>
+<body class="bg-general">
+  <div class="container mt-5">
+    <h1 class="text-center mb-4 evla-title">EverLasting</h1>
+    <div class="card mt-4">
+      <div class="card-body">
+        <h2 class="card-title text-center">Colaboradores del servidor</h2>
+        <div class="under-development" id="colaborators-section">
+          <p class="justify-content-start">Si no ves nada aquí, es posible que tu navegador esté bloqueando procesos
+            de JavaScript...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap JS -->
+  <script>
+    const cSection = document.getElementById('colaborators-section');
+    cSection.innerHTML = '';
+    const newParagraph = document.createElement('p');
+    newParagraph.classList.add('justify-content-start');
+  
+    fetch('credits.json')
+      .then(response => response.json())
+      .then(data => {
+        console.log('Collaborators data:', data);
+  
+        for (const section in data) {
+          if (data[section].hasOwnProperty("members") && Array.isArray(data[section].members)) {
+            const ul = document.createElement('ul'); // Create <ul> element
+            ul.classList.add('team-list', 'title');
+            ul.setAttribute('style', data[section].style || ''); // Set the style attribute from the data or leave it empty if not provided
+            ul.innerHTML = `${section}`; // Set section name as <strong> tag
+            
+            for (const person of data[section].members) {
+              const li = document.createElement('li'); // Create <li> element
+              li.textContent = person; // Set person name as text content
+              if (person.includes("Ex-")) li.classList.add("stricken");
+              ul.appendChild(li); // Append <li> to <ul>
+            }
+            
+            newParagraph.appendChild(ul); // Append <ul> to the paragraph
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching or parsing JSON:', error);
+      });
+  
+    cSection.appendChild(newParagraph);
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "Staff Histórico": {
+    "members": [
+      "0Key (Owner)",
+      "Rain (Owner)",
+      "Pan (Ex-Admin)",
+      "Frijol (Mod)",
+      "Moy (Ex-Mod)",
+      "Cebolla/knayruh (Mod)",
+      "Nadie (Ex-Helper)",
+      "Sam (Builder)",
+      "Lia (Ex-Builder)",
+      "Dlorah (Ex-Builder)"
+    ],
+    "style": "color: #70D6EF; font-weight: bold; background-color: #386B78;"
+  },
+  "Construcciones": {
+    "members": [
+      "Lia",
+      "Sam",
+      "0Key",
+      "Dlorah",
+      "xRainFire15"
+    ],
+    "style": "color: #80FFCB; font-weight: bold; background-color: #00804C;"
+  },
+  "Equipo de Redes" : {
+    "members": [
+      "Edgard",
+      "Panecillo"
+    ],
+    "style": "color: #E6CCFF; font-weight: bold; background-color: #674D80;"
+  },
+  "Logo": {
+    "members": [
+      "Cebolla/knayruh"
+    ],
+    "style": "color: #E6CCFF; font-weight: bold; background-color: #8382bc;"
+  },
+  "Configuración de Discord": {
+    "members": [
+      "xRainFire15",
+      "0Key",
+      "Pan"
+    ],
+    "style": "color: #ACB2F9; font-weight: bold; background-color: #424CB6;"
+  },
+  "Configuración de Minecraft": {
+    "members": [
+      "xRainFire15",
+      "Pan",
+      "0Key"
+    ],
+    "style": "color: #EF98B1; font-weight: bold; background-color: #6F1932;"
+  },
+  "Crafteos Custom": {
+    "members": [
+      "Pan"
+    ],
+    "style": "color: #4D1F52; font-weight: bold; background-color: #7684EC;"
+  },
+  "Texturas": {
+    "members": [
+      "Pan"
+    ],
+    "style": "color: #4D1F52; font-weight: bold; background-color: #7684EC;"
+  },
+  "Sitio Web": {
+    "members": [
+      "0Key"
+    ],
+    "style": "color: #2F313E; font-weight: bold; background-color: #BBC2F6;"
+  },
+  "Bot de Discord": {
+    "members": [
+      "0Key"
+    ],
+    "style": "color: #ACB2F9; font-weight: bold; background-color: #424CB6;"
+  }
+}
